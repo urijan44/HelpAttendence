@@ -9,27 +9,35 @@
 /* Begin PBXBuildFile section */
 		8A0025FE26D763C700BEEFD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0025FD26D763C700BEEFD3 /* AppDelegate.swift */; };
 		8A00260026D763C700BEEFD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0025FF26D763C700BEEFD3 /* SceneDelegate.swift */; };
-		8A00260226D763C700BEEFD3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A00260126D763C700BEEFD3 /* ViewController.swift */; };
 		8A00260526D763C700BEEFD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260326D763C700BEEFD3 /* Main.storyboard */; };
 		8A00260726D763C700BEEFD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260626D763C700BEEFD3 /* Assets.xcassets */; };
 		8A00260A26D763C700BEEFD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260826D763C700BEEFD3 /* LaunchScreen.storyboard */; };
-		8A61050326D766BB00D65214 /* BusListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61050226D766BB00D65214 /* BusListView.swift */; };
+		8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61050226D766BB00D65214 /* BusListViewController.swift */; };
 		8A61052926D771A500D65214 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61052826D771A500D65214 /* Bus.swift */; };
+		8A93126F26DB885F00FF103E /* BusListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93126E26DB885F00FF103E /* BusListCell.swift */; };
+		8AC8FFB326D89792000CACE3 /* BusStationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8FFB226D89792000CACE3 /* BusStationModel.swift */; };
+		8AC8FFB526D897C6000CACE3 /* BusStationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8FFB426D897C6000CACE3 /* BusStationStore.swift */; };
+		8AF9DE4A26DE6909009FC26D /* AddBusMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9DE4926DE6909009FC26D /* AddBusMapViewController.swift */; };
+		8AF9DE4B26DE7582009FC26D /* SeoulBusStationData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8AC8FFAF26D89768000CACE3 /* SeoulBusStationData.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8A0025FA26D763C700BEEFD3 /* HelpAttendence.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelpAttendence.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0025FD26D763C700BEEFD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A0025FF26D763C700BEEFD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8A00260126D763C700BEEFD3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8A00260426D763C700BEEFD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8A00260626D763C700BEEFD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A00260926D763C700BEEFD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A00260B26D763C700BEEFD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A00261126D7645B00BEEFD3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		8A00261226D7645B00BEEFD3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		8A61050226D766BB00D65214 /* BusListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListView.swift; sourceTree = "<group>"; };
+		8A61050226D766BB00D65214 /* BusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListViewController.swift; sourceTree = "<group>"; };
 		8A61052826D771A500D65214 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		8A93126E26DB885F00FF103E /* BusListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListCell.swift; sourceTree = "<group>"; };
+		8AC8FFAF26D89768000CACE3 /* SeoulBusStationData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SeoulBusStationData.plist; sourceTree = "<group>"; };
+		8AC8FFB226D89792000CACE3 /* BusStationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationModel.swift; sourceTree = "<group>"; };
+		8AC8FFB426D897C6000CACE3 /* BusStationStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationStore.swift; sourceTree = "<group>"; };
+		8AF9DE4926DE6909009FC26D /* AddBusMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBusMapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,33 +70,61 @@
 		8A0025FC26D763C700BEEFD3 /* HelpAttendence */ = {
 			isa = PBXGroup;
 			children = (
-				8A0025FD26D763C700BEEFD3 /* AppDelegate.swift */,
-				8A0025FF26D763C700BEEFD3 /* SceneDelegate.swift */,
+				8AFA2D4826D95053004B19A5 /* AppDelegates */,
 				8A61052726D7719700D65214 /* Models */,
-				8A61052626D7714900D65214 /* ViewControllers */,
-				8A00260326D763C700BEEFD3 /* Main.storyboard */,
-				8A00260626D763C700BEEFD3 /* Assets.xcassets */,
-				8A00260826D763C700BEEFD3 /* LaunchScreen.storyboard */,
-				8A00260B26D763C700BEEFD3 /* Info.plist */,
+				8A61052626D7714900D65214 /* Controllers */,
+				8AFA2D4926D9506A004B19A5 /* Views */,
+				8AC8FFB126D89770000CACE3 /* Resources */,
 			);
 			path = HelpAttendence;
 			sourceTree = "<group>";
 		};
-		8A61052626D7714900D65214 /* ViewControllers */ = {
+		8A61052626D7714900D65214 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8A00260126D763C700BEEFD3 /* ViewController.swift */,
-				8A61050226D766BB00D65214 /* BusListView.swift */,
+				8A61050226D766BB00D65214 /* BusListViewController.swift */,
+				8AF9DE4926DE6909009FC26D /* AddBusMapViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		8A61052726D7719700D65214 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				8A61052826D771A500D65214 /* Bus.swift */,
+				8AC8FFB226D89792000CACE3 /* BusStationModel.swift */,
+				8AC8FFB426D897C6000CACE3 /* BusStationStore.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8AC8FFB126D89770000CACE3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8AC8FFAF26D89768000CACE3 /* SeoulBusStationData.plist */,
+				8A00260B26D763C700BEEFD3 /* Info.plist */,
+				8A00260626D763C700BEEFD3 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8AFA2D4826D95053004B19A5 /* AppDelegates */ = {
+			isa = PBXGroup;
+			children = (
+				8A0025FD26D763C700BEEFD3 /* AppDelegate.swift */,
+				8A0025FF26D763C700BEEFD3 /* SceneDelegate.swift */,
+			);
+			path = AppDelegates;
+			sourceTree = "<group>";
+		};
+		8AFA2D4926D9506A004B19A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A93126E26DB885F00FF103E /* BusListCell.swift */,
+				8A00260326D763C700BEEFD3 /* Main.storyboard */,
+				8A00260826D763C700BEEFD3 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -117,6 +153,9 @@
 		8A0025F226D763C700BEEFD3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
@@ -149,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AF9DE4B26DE7582009FC26D /* SeoulBusStationData.plist in Resources */,
 				8A00260A26D763C700BEEFD3 /* LaunchScreen.storyboard in Resources */,
 				8A00260726D763C700BEEFD3 /* Assets.xcassets in Resources */,
 				8A00260526D763C700BEEFD3 /* Main.storyboard in Resources */,
@@ -162,8 +202,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A00260226D763C700BEEFD3 /* ViewController.swift in Sources */,
-				8A61050326D766BB00D65214 /* BusListView.swift in Sources */,
+				8AF9DE4A26DE6909009FC26D /* AddBusMapViewController.swift in Sources */,
+				8AC8FFB326D89792000CACE3 /* BusStationModel.swift in Sources */,
+				8A93126F26DB885F00FF103E /* BusListCell.swift in Sources */,
+				8AC8FFB526D897C6000CACE3 /* BusStationStore.swift in Sources */,
+				8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */,
 				8A0025FE26D763C700BEEFD3 /* AppDelegate.swift in Sources */,
 				8A00260026D763C700BEEFD3 /* SceneDelegate.swift in Sources */,
 				8A61052926D771A500D65214 /* Bus.swift in Sources */,
@@ -246,7 +289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -302,7 +345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -319,8 +362,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJXA3BQDMJ;
-				INFOPLIST_FILE = HelpAttendence/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_FILE = HelpAttendence/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,8 +382,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJXA3BQDMJ;
-				INFOPLIST_FILE = HelpAttendence/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_FILE = HelpAttendence/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
