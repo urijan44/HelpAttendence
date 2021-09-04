@@ -108,16 +108,19 @@
                     <navigationItem key="navigationItem" title="출근을 부탁해" id="yHY-he-2MM">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KgU-zJ-933">
                             <connections>
-                                <segue destination="XBd-H4-8N8" kind="show" id="3g1-zP-Hzo"/>
+                                <segue destination="XBd-H4-8N8" kind="show" identifier="AddBusMap" id="3g1-zP-Hzo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addBusMap" destination="KgU-zJ-933" id="QmI-oJ-D8G"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="atz-z9-NVH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1955.072463768116" y="114.50892857142857"/>
         </scene>
-        <!--Add Bus Map View Controller-->
+        <!--지도-->
         <scene sceneID="Blv-Dl-LSZ">
             <objects>
                 <viewController id="XBd-H4-8N8" customClass="AddBusMapViewController" customModule="HelpAttendence" customModuleProvider="target" sceneMemberID="viewController">
@@ -127,6 +130,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TFK-4Z-Zk5">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <connections>
+                                    <outlet property="delegate" destination="XBd-H4-8N8" id="xTm-ck-ZfJ"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CrH-oo-68s"/>
@@ -138,7 +144,7 @@
                             <constraint firstItem="CrH-oo-68s" firstAttribute="trailing" secondItem="TFK-4Z-Zk5" secondAttribute="trailing" id="fFq-vl-hha"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="VbK-k2-RgR">
+                    <navigationItem key="navigationItem" title="지도" id="VbK-k2-RgR">
                         <barButtonItem key="rightBarButtonItem" title="내 위치" id="bQp-kh-Ulb">
                             <connections>
                                 <action selector="showUser" destination="XBd-H4-8N8" id="58V-0z-KzE"/>
@@ -147,11 +153,41 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="TFK-4Z-Zk5" id="llZ-fk-q23"/>
+                        <segue destination="p1y-54-XYj" kind="show" id="yP5-Jl-2p6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pj-eo-5aO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2865" y="114"/>
+        </scene>
+        <!--도착버스-->
+        <scene sceneID="58k-0F-MQZ">
+            <objects>
+                <tableViewController id="p1y-54-XYj" customClass="StationDetailViewController" customModule="HelpAttendence" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tkg-ch-LoC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zuh-IM-mHo">
+                                <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zuh-IM-mHo" id="RoS-zW-iFF">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="p1y-54-XYj" id="L5S-Gs-1nB"/>
+                            <outlet property="delegate" destination="p1y-54-XYj" id="Rz5-Kv-nUP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="도착버스" leftItemsSupplementBackButton="YES" id="KZP-RS-eJn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Kf-L7-N1E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3746" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mFV-AD-xV2">

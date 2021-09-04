@@ -14,6 +14,7 @@
 		8A00260A26D763C700BEEFD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260826D763C700BEEFD3 /* LaunchScreen.storyboard */; };
 		8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61050226D766BB00D65214 /* BusListViewController.swift */; };
 		8A61052926D771A500D65214 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61052826D771A500D65214 /* Bus.swift */; };
+		8A8BBFDA26E3942B0084184B /* StationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BBFD926E3942B0084184B /* StationDetailViewController.swift */; };
 		8A93126F26DB885F00FF103E /* BusListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93126E26DB885F00FF103E /* BusListCell.swift */; };
 		8AC8FFB326D89792000CACE3 /* BusStationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8FFB226D89792000CACE3 /* BusStationModel.swift */; };
 		8AC8FFB526D897C6000CACE3 /* BusStationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8FFB426D897C6000CACE3 /* BusStationStore.swift */; };
@@ -33,6 +34,7 @@
 		8A00261226D7645B00BEEFD3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8A61050226D766BB00D65214 /* BusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListViewController.swift; sourceTree = "<group>"; };
 		8A61052826D771A500D65214 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		8A8BBFD926E3942B0084184B /* StationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailViewController.swift; sourceTree = "<group>"; };
 		8A93126E26DB885F00FF103E /* BusListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListCell.swift; sourceTree = "<group>"; };
 		8AC8FFAF26D89768000CACE3 /* SeoulBusStationData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SeoulBusStationData.plist; sourceTree = "<group>"; };
 		8AC8FFB226D89792000CACE3 /* BusStationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationModel.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				8A61050226D766BB00D65214 /* BusListViewController.swift */,
 				8AF9DE4926DE6909009FC26D /* AddBusMapViewController.swift */,
+				8A8BBFD926E3942B0084184B /* StationDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				8AC8FFB526D897C6000CACE3 /* BusStationStore.swift in Sources */,
 				8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */,
 				8A0025FE26D763C700BEEFD3 /* AppDelegate.swift in Sources */,
+				8A8BBFDA26E3942B0084184B /* StationDetailViewController.swift in Sources */,
 				8A00260026D763C700BEEFD3 /* SceneDelegate.swift in Sources */,
 				8A61052926D771A500D65214 /* Bus.swift in Sources */,
 			);
@@ -289,7 +293,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -345,7 +349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -363,7 +367,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJXA3BQDMJ;
 				INFOPLIST_FILE = HelpAttendence/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,7 +387,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = XJXA3BQDMJ;
 				INFOPLIST_FILE = HelpAttendence/Resources/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

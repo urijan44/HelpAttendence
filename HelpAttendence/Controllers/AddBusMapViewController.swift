@@ -7,12 +7,14 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class AddBusMapViewController: UIViewController {
   @IBOutlet weak var mapView: MKMapView!
   
   var busStationStore: BusStationStore!
   var stations: [BusStationModel] = []
+  var userLocation: CLLocation?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,15 +28,27 @@ class AddBusMapViewController: UIViewController {
       stationDataNotFoundAlert()
     }
     
-    
+
     updateLocations()
+    
+    if let userLocation = userLocation {
+      print("setFit")
+      let region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+      mapView.regionThatFits(region)
+      mapView.setRegion(region, animated: true)
+    } else {
+      print("user location nil")
+    }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
   }
   
   
   
   //MARK:- Actions
   @IBAction func showUser() {
-    let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+    let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
     mapView.setRegion(mapView.regionThatFits(region), animated: true)
   }
   
@@ -54,38 +68,47 @@ class AddBusMapViewController: UIViewController {
     mapView.removeAnnotations(stations)
     mapView.addAnnotations(stations)
   }
+  
 }
 
 // MK Map View Delegates
 
 extension AddBusMapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-    guard annotation is BusStationModel else {
-      return nil
-    }
     
-    let identifier = "Station"
-    var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-    if annotationView == nil {
-      let pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-      pinView.isEnabled = true
-      pinView.canShowCallout = true
-      pinView.animatesDrop = false
-      pinView.pinTintColor = UIColor(red: 0.2, green: 0.2, blue: 1, alpha: 1)
+    switch annotation {
+    case let cluster as MKClusterAnnotation:
+      let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "Cluster") as? MKMarkerAnnotationView ?? MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "Cluster")
+      annotationView.markerTintColor = UIColor(named: "BusMarkerBackgroundColor")
       
+      for clusterAnnotation in cluster.memberAnnotations {
+        if let station = clusterAnnotation as? BusStationModel {
+          cluster.title = station.name
+          break
+        }
+      }
+      annotationView.titleVisibility = .visible
+      return annotationView
+    case let stationAnnotation as BusStationModel:
+      let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "Station") as? MKMarkerAnnotationView ?? MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "Station")
+      annotationView.canShowCallout = true
+      annotationView.glyphText = "🚌"
+      annotationView.clusteringIdentifier = "Cluster"
+      annotationView.markerTintColor = UIColor(named: "BusMarkerBackgroundColor")
+      annotationView.titleVisibility = .visible
+
       let rightButton = UIButton(type: .detailDisclosure)
-      pinView.rightCalloutAccessoryView = rightButton
-      annotationView = pinView
-    }
-    
-    if let annotationView = annotationView {
+      annotationView.rightCalloutAccessoryView = rightButton
+
       annotationView.annotation = annotation
-      
       let button = annotationView.rightCalloutAccessoryView as! UIButton
       if let index = stations.firstIndex(of: annotation as! BusStationModel) {
         button.tag = index
       }
+      return annotationView
+      
+    default:
+      return nil
     }
-    return annotationView
   }
 }
