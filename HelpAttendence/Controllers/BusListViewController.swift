@@ -11,11 +11,11 @@ import CoreLocation
 class BusListView: UITableViewController {
   
   //테스트용 더미 데이터
-  var dummyBus: [BusModel] = [
-    BusModel(local: "서울", number: "6512", arriveStation: "구로디지털단지역", currentStation: "해피랜드", remainTime: "15분"),
-    BusModel(local: "서울", number: "구로09", arriveStation: "구로디지털단지역환승센터", currentStation: "해피랜드", remainTime: "100분"),
-    BusModel(local: "서울", number: "6514", arriveStation: "구로디지털단지역", currentStation: "해피랜드", remainTime: "10분"),
-    BusModel(local: "서울", number: "5618", arriveStation: "구로디지털단지역", currentStation: "해피랜드", remainTime: "2분"),
+  var dummyBus: [UserBusInfoModel] = [
+    UserBusInfoModel(local: "서울", number: "6512", arriveStation: "구로디지털단지역", currentStation: "해피랜드", remainTime: "15분"),
+    UserBusInfoModel(local: "서울", number: "구로09", arriveStation: "구로디지털단지역환승센터", currentStation: "해피랜드", remainTime: "100분"),
+    UserBusInfoModel(local: "서울", number: "6514", arriveStation: "구로디지털단지역", currentStation: "해피랜드", remainTime: "10분"),
+    UserBusInfoModel(local: "서울", number: "5618", arriveStation: "구로디지털단지역", currentStation: "해피랜드", remainTime: "2분"),
   ]
   
   @IBOutlet weak var addBusMap: UIBarButtonItem!

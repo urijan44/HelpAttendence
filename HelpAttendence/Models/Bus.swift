@@ -10,9 +10,8 @@
 import Foundation
 
 struct BusModel: Codable {
-  var local: String
-  var number: String
-  var arriveStation: String
-  var currentStation: String
-  var remainTime: String
+  var busRouteId: String
+  var busRouteName: String
+  var startStation: String
+  var endStation: String
 }

@@ -153,7 +153,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="TFK-4Z-Zk5" id="llZ-fk-q23"/>
-                        <segue destination="p1y-54-XYj" kind="show" id="yP5-Jl-2p6"/>
+                        <segue destination="p1y-54-XYj" kind="show" identifier="showDetailStation" id="yP5-Jl-2p6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Pj-eo-5aO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -169,13 +169,71 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zuh-IM-mHo">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusCell" id="zuh-IM-mHo" customClass="StationDetailCell" customModule="HelpAttendence" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="24.5" width="375" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zuh-IM-mHo" id="RoS-zW-iFF">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BusRouteNM" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPr-sX-huw">
+                                            <rect key="frame" x="15" y="11.5" width="116" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="KY0-Gc-nm8"/>
+                                                <constraint firstAttribute="width" constant="100" id="e93-Rb-VmA"/>
+                                                <constraint firstAttribute="height" constant="21" id="om8-N1-aFV"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출발지" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PA-D3-AgM">
+                                            <rect key="frame" x="141" y="11.5" width="99" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="8kn-jf-S3K"/>
+                                                <constraint firstAttribute="width" constant="99" id="yIm-MV-6tz"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="도착지" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqV-2X-PYa">
+                                            <rect key="frame" x="266" y="11.5" width="99" height="20.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="99" id="bs9-Ra-eYA"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="➤" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQu-JG-mxZ">
+                                            <rect key="frame" x="246" y="11.5" width="14" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="14" id="BK5-iH-JLV"/>
+                                                <constraint firstAttribute="height" constant="21" id="wM3-GS-zaK"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="9PA-D3-AgM" firstAttribute="leading" secondItem="cPr-sX-huw" secondAttribute="trailing" constant="10" id="2yG-Fg-R1c"/>
+                                        <constraint firstItem="cPr-sX-huw" firstAttribute="baseline" secondItem="9PA-D3-AgM" secondAttribute="baseline" id="3JG-dW-tzk"/>
+                                        <constraint firstItem="9PA-D3-AgM" firstAttribute="centerY" secondItem="RoS-zW-iFF" secondAttribute="centerY" id="5SN-jV-Q9L"/>
+                                        <constraint firstItem="cPr-sX-huw" firstAttribute="leading" secondItem="RoS-zW-iFF" secondAttribute="leading" constant="15" id="ADn-xC-9ge"/>
+                                        <constraint firstAttribute="trailing" secondItem="vqV-2X-PYa" secondAttribute="trailing" constant="10" id="IKl-bD-Ioo"/>
+                                        <constraint firstItem="vqV-2X-PYa" firstAttribute="leading" secondItem="BQu-JG-mxZ" secondAttribute="trailing" constant="6" id="Wef-CB-HT3"/>
+                                        <constraint firstItem="BQu-JG-mxZ" firstAttribute="leading" secondItem="9PA-D3-AgM" secondAttribute="trailing" constant="6" id="kO4-th-8Mk"/>
+                                        <constraint firstItem="vqV-2X-PYa" firstAttribute="centerY" secondItem="RoS-zW-iFF" secondAttribute="centerY" id="pAg-zI-fjF"/>
+                                        <constraint firstItem="BQu-JG-mxZ" firstAttribute="centerY" secondItem="RoS-zW-iFF" secondAttribute="centerY" id="uya-lO-cB2"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="busRouteName" destination="cPr-sX-huw" id="aiq-VO-Mm8"/>
+                                    <outlet property="destinationStation" destination="vqV-2X-PYa" id="oLh-yM-m5R"/>
+                                    <outlet property="startStation" destination="9PA-D3-AgM" id="AQD-9P-eki"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -187,7 +245,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Kf-L7-N1E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3746" y="114"/>
+            <point key="canvasLocation" x="3744.8000000000002" y="113.79310344827587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mFV-AD-xV2">
