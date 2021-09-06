@@ -15,34 +15,7 @@ class AddBusMapViewController: UIViewController {
   var busStationStore: BusStationStore!
   var stations: [BusStationModel] = []
   var userLocation: CLLocation?
-  
-  //MARK:- XML Parse
-  var routes: [Route] = []
-
-  var currentElement = ""
-  var xmlParser = XMLParser()
-  var xmlDictionary: [String: String] = [:]
-
-  func requestStationInfo(_ arsId: String) {
-    var comparision = arsId
-    let desired = "00000"
     
-    if comparision.count < desired.count {
-      comparision.insert("0", at: comparision.startIndex)
-    }
-    
-    let baseURLString = "http://ws.bus.go.kr/api/rest/stationinfo/getRouteByStation?"
-    
-    guard let serviceKey = Bundle.main.infoDictionary?["StationInfoKey"] as? String else { fatalError("api key not found!")}
-    guard let url = URL(string: "\(baseURLString)serviceKey=\(serviceKey)&arsId=\(comparision)") else { fatalError("url convert error")}
-    guard let xmlParser = XMLParser(contentsOf: url) else { return }
-    
-    xmlParser.delegate = self
-    xmlParser.parse()
-  }
-
-  
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -59,7 +32,6 @@ class AddBusMapViewController: UIViewController {
     updateLocations()
     
     if let userLocation = userLocation {
-      print("setFit")
       let region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
       mapView.regionThatFits(region)
       mapView.setRegion(region, animated: true)
@@ -109,8 +81,7 @@ class AddBusMapViewController: UIViewController {
       let button = sender as! UIButton
       let station = stations[button.tag]
       
-      requestStationInfo(station.ARSID)
-      controller.routes = routes
+      controller.arsId = station.ARSID
     }
   }
 }
@@ -140,7 +111,6 @@ extension AddBusMapViewController: MKMapViewDelegate {
       annotationView.clusteringIdentifier = "Cluster"
       annotationView.markerTintColor = UIColor(named: "BusMarkerBackgroundColor")
       annotationView.titleVisibility = .visible
-
       let rightButton = UIButton(type: .detailDisclosure)
       rightButton.addTarget(self, action: #selector(showStationDetail(_:)), for: .touchUpInside)
       annotationView.rightCalloutAccessoryView = rightButton
@@ -156,64 +126,4 @@ extension AddBusMapViewController: MKMapViewDelegate {
       return nil
     }
   }
-}
-
-enum XMLKey: String {
-  case busRouteId = "busRouteId"
-  case busRouteNm = "busRouteNm"
-  case stBegin = "stBegin"
-  case stEnd = "stEnd"
-}
-
-struct Routes {
-  let route: [Route]
-}
-
-struct Route {
-  var busRouteId: String = ""
-  var busRouteNm: String = ""
-  var stBegin: String = ""
-  var stEnd: String = ""
-}
-
-
-//MARK:- XMLParser Delegats
-extension AddBusMapViewController: XMLParserDelegate {
-  
-  
-  
-  func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
-    currentElement = elementName
-    if elementName == "itemList" {
-      xmlDictionary.removeAll()
-    }
-  }
-  
-  func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-    if elementName == "itemList" {
-      guard let busRouteId = xmlDictionary["busRouteId"],
-      let busRouteNm = xmlDictionary["busRouteNm"],
-      let stBegin = xmlDictionary["stBegin"],
-      let stEnd = xmlDictionary["stEnd"] else { return }
-      
-      let route = Route(busRouteId: busRouteId, busRouteNm: busRouteNm, stBegin: stBegin, stEnd: stEnd)
-      routes.append(route)
-    }
-  }
-  
-  func parser(_ parser: XMLParser, foundCharacters string: String) {
-    switch currentElement {
-    case "busRouteId":
-      xmlDictionary["busRouteId"] = string
-    case "busRouteNm":
-      xmlDictionary["busRouteNm"] = string
-    case "stBegin":
-      xmlDictionary["stBegin"] = string
-    case "stEnd":
-      xmlDictionary["stEnd"] = string
-    default:
-      break
-    }
-  }
-
 }
