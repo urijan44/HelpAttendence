@@ -43,12 +43,12 @@ class BusListViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    locationInit()
-    if userLocation == nil {
-      addBusMap.isEnabled = false
+    do {
+      let _ = try BusStationStore()
+    } catch {
+      print(error.localizedDescription)
     }
-    
+    locationInit()
     reloadAPI()
     createTimer()
   }
@@ -78,7 +78,12 @@ class BusListViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "AddBusMap" {
       let controller = segue.destination as! AddBusMapViewController
-      controller.userLocation = userLocation
+      if userLocation == nil {
+        controller.userLocation = CLLocation(latitude: 37.551251, longitude: 126.988322)
+      } else {
+        controller.userLocation = userLocation
+      }
+      locationInit()
     }
     
     if segue.identifier == "ShowBusPosition" {
@@ -207,7 +212,6 @@ extension BusListViewController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     let newLocation = locations.last!
-    print("didUpdateLocations \(newLocation)")
     
     // 1
     if newLocation.timestamp.timeIntervalSinceNow < -5 {

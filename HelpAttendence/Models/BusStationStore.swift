@@ -127,8 +127,8 @@ class BusStationStore {
     do {
       stations = try load()
     } catch {
-      print(error.localizedDescription)
       try networkRequest()
+      print(error.localizedDescription)
     }
   }
 }
