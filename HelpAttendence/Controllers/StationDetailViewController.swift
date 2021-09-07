@@ -22,7 +22,7 @@ class StationDetailViewController: UITableViewController {
   var selectRoute: StationBusListModel?
 
   var currentElement = ""
-  var xmlParser = XMLParser()
+  
   var xmlDictionary: [String: String] = [:]
 
   func requestStationInfo(_ arsId: String) {

@@ -13,6 +13,9 @@
 		8A00260726D763C700BEEFD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260626D763C700BEEFD3 /* Assets.xcassets */; };
 		8A00260A26D763C700BEEFD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260826D763C700BEEFD3 /* LaunchScreen.storyboard */; };
 		8A11363826E7656200F1C331 /* BusDetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11363726E7656200F1C331 /* BusDetailMapViewController.swift */; };
+		8A11363A26E77E5D00F1C331 /* MapDetailViewBusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11363926E77E5D00F1C331 /* MapDetailViewBusModel.swift */; };
+		8A11364326E788CA00F1C331 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11364226E788CA00F1C331 /* Functions.swift */; };
+		8A11364526E78B6600F1C331 /* MyBusStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A11364426E78B6600F1C331 /* MyBusStorage.swift */; };
 		8A416AA326E668B400B41044 /* StationBusListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A416AA226E668B400B41044 /* StationBusListModel.swift */; };
 		8A416AA526E68B4100B41044 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A416AA426E68B4100B41044 /* Constants.swift */; };
 		8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61050226D766BB00D65214 /* BusListViewController.swift */; };
@@ -35,6 +38,9 @@
 		8A00261126D7645B00BEEFD3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		8A00261226D7645B00BEEFD3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8A11363726E7656200F1C331 /* BusDetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusDetailMapViewController.swift; sourceTree = "<group>"; };
+		8A11363926E77E5D00F1C331 /* MapDetailViewBusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewBusModel.swift; sourceTree = "<group>"; };
+		8A11364226E788CA00F1C331 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		8A11364426E78B6600F1C331 /* MyBusStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBusStorage.swift; sourceTree = "<group>"; };
 		8A416AA226E668B400B41044 /* StationBusListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationBusListModel.swift; sourceTree = "<group>"; };
 		8A416AA426E68B4100B41044 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A61050226D766BB00D65214 /* BusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +109,10 @@
 				8AC8FFB226D89792000CACE3 /* BusStationModel.swift */,
 				8AC8FFB426D897C6000CACE3 /* BusStationStore.swift */,
 				8A416AA226E668B400B41044 /* StationBusListModel.swift */,
+				8A11364426E78B6600F1C331 /* MyBusStorage.swift */,
+				8A11363926E77E5D00F1C331 /* MapDetailViewBusModel.swift */,
 				8A416AA426E68B4100B41044 /* Constants.swift */,
+				8A11364226E788CA00F1C331 /* Functions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -216,12 +225,15 @@
 				8AF9DE4A26DE6909009FC26D /* AddBusMapViewController.swift in Sources */,
 				8AC8FFB326D89792000CACE3 /* BusStationModel.swift in Sources */,
 				8A11363826E7656200F1C331 /* BusDetailMapViewController.swift in Sources */,
+				8A11364326E788CA00F1C331 /* Functions.swift in Sources */,
+				8A11364526E78B6600F1C331 /* MyBusStorage.swift in Sources */,
 				8A93126F26DB885F00FF103E /* BusListCell.swift in Sources */,
 				8AC8FFB526D897C6000CACE3 /* BusStationStore.swift in Sources */,
 				8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */,
 				8A416AA526E68B4100B41044 /* Constants.swift in Sources */,
 				8A0025FE26D763C700BEEFD3 /* AppDelegate.swift in Sources */,
 				8A8BBFDA26E3942B0084184B /* StationDetailViewController.swift in Sources */,
+				8A11363A26E77E5D00F1C331 /* MapDetailViewBusModel.swift in Sources */,
 				8A416AA326E668B400B41044 /* StationBusListModel.swift in Sources */,
 				8A00260026D763C700BEEFD3 /* SceneDelegate.swift in Sources */,
 			);

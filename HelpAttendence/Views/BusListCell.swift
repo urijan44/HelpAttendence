@@ -26,10 +26,6 @@ class BusListCell: UITableViewCell {
         }
       }
       cell.traTime1 = String(arrTime1)
-    } else {
-      let navigationController = window!.rootViewController as! UINavigationController
-      let controller = navigationController.viewControllers[0] as! BusListViewController
-      controller.reloadAPI()
     }
     
     guard var arrTime2 = Int(cell.traTime2) else { return }

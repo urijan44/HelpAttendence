@@ -126,7 +126,7 @@
                                     <outlet property="busNumber" destination="1gI-8V-5lu" id="zAp-iQ-fYq"/>
                                     <outlet property="nextTime" destination="tIa-xE-Qvw" id="QMa-Fv-ZXB"/>
                                     <outlet property="remainTime" destination="KlS-Fy-rEQ" id="w8E-gr-1q1"/>
-                                    <segue destination="yHz-1W-yv5" kind="show" id="vsd-5o-omy"/>
+                                    <segue destination="yHz-1W-yv5" kind="show" identifier="ShowBusPosition" id="vsd-5o-omy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -180,6 +180,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="지도" id="VbK-k2-RgR">
+                        <barButtonItem key="leftBarButtonItem" title="뒤로가기" image="chevron.backward" catalog="system" id="YNa-mN-KLS">
+                            <connections>
+                                <action selector="backward:" destination="XBd-H4-8N8" id="nGY-Le-FC2"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="내 위치" id="bQp-kh-Ulb">
                             <connections>
                                 <action selector="showUser" destination="XBd-H4-8N8" id="58V-0z-KzE"/>
@@ -195,10 +200,10 @@
             </objects>
             <point key="canvasLocation" x="2865" y="114"/>
         </scene>
-        <!--View Controller-->
+        <!--Bus Detail Map View Controller-->
         <scene sceneID="Hye-J2-akG">
             <objects>
-                <viewController id="yHz-1W-yv5" sceneMemberID="viewController">
+                <viewController id="yHz-1W-yv5" customClass="BusDetailMapViewController" customModule="HelpAttendence" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ah7-Vv-WcT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -219,7 +224,21 @@
                             <constraint firstItem="dp6-54-DjO" firstAttribute="top" secondItem="qyI-Yr-yty" secondAttribute="top" id="e21-Nn-7EY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="WIc-Mn-PHP"/>
+                    <navigationItem key="navigationItem" id="WIc-Mn-PHP">
+                        <barButtonItem key="leftBarButtonItem" title="뒤로가기" image="chevron.backward" catalog="system" style="done" id="Yyt-oF-VDA">
+                            <connections>
+                                <action selector="backward:" destination="yHz-1W-yv5" id="lXC-IY-s9w"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="내 위치" id="zJk-6R-DCN">
+                            <connections>
+                                <action selector="showUser" destination="yHz-1W-yv5" id="UIZ-xf-NNR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="dp6-54-DjO" id="cvd-vW-hFL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4t-nG-qhp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -288,6 +307,7 @@
     </scenes>
     <resources>
         <image name="b.square.fill" catalog="system" width="128" height="114"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

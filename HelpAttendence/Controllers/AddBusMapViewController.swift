@@ -40,11 +40,6 @@ class AddBusMapViewController: UIViewController {
     }
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-  }
-  
-  
-  
   //MARK:- Actions
   @IBAction func showUser() {
     let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
@@ -84,6 +79,12 @@ class AddBusMapViewController: UIViewController {
       controller.arsId = station.ARSID
     }
   }
+  
+  @IBAction func backward(_ sender: UIBarButtonItem) {
+    navigationController?.popViewController(animated: true)
+  }
+  
+  
 }
 
 // MK Map View Delegates

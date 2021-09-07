@@ -10,14 +10,12 @@ import CoreLocation
 
 class BusListViewController: UITableViewController {
   
-  var myBusStore: [StationBusListModel] = [] {
+  var myBusStorage = MyBusStorage(withLoadCheck: true) {
     didSet {
       reloadAPI()
       tableView.reloadData()
     }
   }
-  
-  var seconds = 10
   
   @IBOutlet weak var addBusMap: UIBarButtonItem!
   
@@ -36,9 +34,11 @@ class BusListViewController: UITableViewController {
   var timer: Timer?
   var arriveTime: Timer?
   
+  var selectBusIndex = 0
+  
   // XML parser property
   var currentElement = ""
-  var xmlParser = XMLParser()
+  
   var xmlDictionary: [String: String] = [:]
   
   override func viewDidLoad() {
@@ -80,12 +80,24 @@ class BusListViewController: UITableViewController {
       let controller = segue.destination as! AddBusMapViewController
       controller.userLocation = userLocation
     }
+    
+    if segue.identifier == "ShowBusPosition" {
+      let controller = segue.destination as! BusDetailMapViewController
+      //Error!!
+      print(myBusStorage.myBusStore[selectBusIndex].rtNm)
+      
+      controller.vehId1 = myBusStorage.myBusStore[selectBusIndex].vehId1
+      controller.vehId2 = myBusStorage.myBusStore[selectBusIndex].vehId2
+      controller.busName = myBusStorage.myBusStore[selectBusIndex].rtNm
+    }
   }
   
   @IBAction func addBusList(unwindSegue: UIStoryboardSegue) {
     guard let stationDetailViewController = unwindSegue.source as? StationDetailViewController, let route = stationDetailViewController.selectRoute else { return }
-    if !myBusStore.contains(route) {
-      myBusStore.append(route)
+    if !myBusStorage.myBusStore.contains(route) {
+      myBusStorage.myBusStore.append(route)
+      myBusStorage.saveMyBusStore()
+      reloadAPI()
     } else {
       print("이미 있는 경로입니다!")
     }
@@ -145,23 +157,23 @@ class BusListViewController: UITableViewController {
   
   //bus info reload
   @IBAction func reloadAPI() {
-    if !myBusStore.isEmpty {
-      myBusStore.forEach { model in
+    if !myBusStorage.myBusStore.isEmpty {
+      myBusStorage.myBusStore.forEach { model in
         updateBusInformation(model)
       }
     }
   }
   
   
-  //MARK:- Table View Data Source
+  //MARK:- Table View Delegates
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    myBusStore.count
+    myBusStorage.myBusStore.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(BusListCell.self)", for: indexPath) as? BusListCell else { fatalError("Could not create bus Cell")}
-    let route = myBusStore[indexPath.row]
+    let route = myBusStorage.myBusStore[indexPath.row]
     cell.arriveLocation.text = route.stNm
     cell.busNumber.text = route.rtNm
     cell.remainTime.text = route.arrmsg1
@@ -171,9 +183,14 @@ class BusListViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    myBusStore.remove(at: indexPath.row)
+    myBusStorage.myBusStore.remove(at: indexPath.row)
     let indexPaths = [indexPath]
     tableView.deleteRows(at: indexPaths, with: .automatic)
+    myBusStorage.saveMyBusStore()
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    selectBusIndex = indexPath.row
   }
 }
 
@@ -252,7 +269,7 @@ extension BusListViewController: XMLParserDelegate {
         }
       }
       
-      myBusStore.forEach { model in
+      myBusStorage.myBusStore.forEach { model in
         if route == model{
           model.arrmsg1 = route.arrmsg1
           model.arrmsg2 = route.arrmsg2
@@ -286,7 +303,7 @@ extension BusListViewController {
     guard let visibleRowsIndexPaths = tableView.indexPathsForVisibleRows else { return }
     for indexPath in visibleRowsIndexPaths {
       if let cell = tableView.cellForRow(at: indexPath) as? BusListCell {
-        cell.updateTime(myBusStore[indexPath.row])
+        cell.updateTime(myBusStorage.myBusStore[indexPath.row])
       }
     }
   }

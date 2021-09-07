@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StationBusListModel {
+class StationBusListModel: Codable {
   var adirection: String = ""
   var busRouteId: String = ""
   var rtNm: String = ""

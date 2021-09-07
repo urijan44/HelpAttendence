@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MyBuses" representedClassName="MyBuses" syncable="YES">
+        <attribute name="adirection" optional="YES" attributeType="String"/>
+        <attribute name="arrmsg1" optional="YES" attributeType="String"/>
+        <attribute name="arrmsg2" optional="YES" attributeType="String"/>
+        <attribute name="busRouteId" optional="YES" attributeType="String"/>
+        <attribute name="rtNm" optional="YES" attributeType="String"/>
+        <attribute name="staOrd" optional="YES" attributeType="String"/>
+        <attribute name="stId" optional="YES" attributeType="String"/>
+        <attribute name="traTime1" optional="YES" attributeType="String"/>
+        <attribute name="traTime2" optional="YES" attributeType="String"/>
+        <attribute name="vehId1" optional="YES" attributeType="String"/>
+        <attribute name="vehId2" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="MyBuses" positionX="-63" positionY="-18" width="128" height="194"/>
+    </elements>
+</model>
