@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StationBusListModel {
+class StationBusListModel {
   var adirection: String = ""
   var busRouteId: String = ""
   var rtNm: String = ""
@@ -16,12 +16,14 @@ struct StationBusListModel {
   var staOrd: String = ""
   var arrmsg1: String = ""
   var arrmsg2: String = ""
+  var vehId1: String = ""
+  var vehId2: String = ""
 
   enum CodingKeysError: Error {
     case keyMatchError
   }
   
-  mutating func codingKeys(_ key: String, _ property: String) throws {
+  func codingKeys(_ key: String, _ property: String) throws {
     switch key {
     case "adirection":
       adirection = property
@@ -39,8 +41,18 @@ struct StationBusListModel {
       arrmsg1 = property
     case "arrmsg2":
       arrmsg2 = property
+    case "vehId1":
+      vehId1 = property
+    case "vehId2":
+      vehId2 = property
     default:
       throw CodingKeysError.keyMatchError
     }
+  }
+}
+
+extension StationBusListModel: Equatable {
+  static func ==(lhs: StationBusListModel, rhs: StationBusListModel) -> Bool {
+    lhs.rtNm == rhs.rtNm && lhs.stNm == rhs.stNm
   }
 }

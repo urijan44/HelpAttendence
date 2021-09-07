@@ -13,10 +13,10 @@
 		8A00260726D763C700BEEFD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260626D763C700BEEFD3 /* Assets.xcassets */; };
 		8A00260A26D763C700BEEFD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A00260826D763C700BEEFD3 /* LaunchScreen.storyboard */; };
 		8A416AA326E668B400B41044 /* StationBusListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A416AA226E668B400B41044 /* StationBusListModel.swift */; };
+		8A416AA526E68B4100B41044 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A416AA426E68B4100B41044 /* Constants.swift */; };
 		8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A61050226D766BB00D65214 /* BusListViewController.swift */; };
 		8A8BBFDA26E3942B0084184B /* StationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8BBFD926E3942B0084184B /* StationDetailViewController.swift */; };
 		8A93126F26DB885F00FF103E /* BusListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A93126E26DB885F00FF103E /* BusListCell.swift */; };
-		8AC8844E26E4E4B7009CA8B3 /* StationDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8844D26E4E4B7009CA8B3 /* StationDetailCell.swift */; };
 		8AC8FFB326D89792000CACE3 /* BusStationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8FFB226D89792000CACE3 /* BusStationModel.swift */; };
 		8AC8FFB526D897C6000CACE3 /* BusStationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC8FFB426D897C6000CACE3 /* BusStationStore.swift */; };
 		8AF9DE4A26DE6909009FC26D /* AddBusMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9DE4926DE6909009FC26D /* AddBusMapViewController.swift */; };
@@ -34,10 +34,10 @@
 		8A00261126D7645B00BEEFD3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		8A00261226D7645B00BEEFD3 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		8A416AA226E668B400B41044 /* StationBusListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationBusListModel.swift; sourceTree = "<group>"; };
+		8A416AA426E68B4100B41044 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A61050226D766BB00D65214 /* BusListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListViewController.swift; sourceTree = "<group>"; };
 		8A8BBFD926E3942B0084184B /* StationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailViewController.swift; sourceTree = "<group>"; };
 		8A93126E26DB885F00FF103E /* BusListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusListCell.swift; sourceTree = "<group>"; };
-		8AC8844D26E4E4B7009CA8B3 /* StationDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailCell.swift; sourceTree = "<group>"; };
 		8AC8845126E4EAB5009CA8B3 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		8AC8FFAF26D89768000CACE3 /* SeoulBusStationData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SeoulBusStationData.plist; sourceTree = "<group>"; };
 		8AC8FFB226D89792000CACE3 /* BusStationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationModel.swift; sourceTree = "<group>"; };
@@ -100,6 +100,7 @@
 				8AC8FFB226D89792000CACE3 /* BusStationModel.swift */,
 				8AC8FFB426D897C6000CACE3 /* BusStationStore.swift */,
 				8A416AA226E668B400B41044 /* StationBusListModel.swift */,
+				8A416AA426E68B4100B41044 /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				8A93126E26DB885F00FF103E /* BusListCell.swift */,
-				8AC8844D26E4E4B7009CA8B3 /* StationDetailCell.swift */,
 				8A00260326D763C700BEEFD3 /* Main.storyboard */,
 				8A00260826D763C700BEEFD3 /* LaunchScreen.storyboard */,
 			);
@@ -210,12 +210,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AC8844E26E4E4B7009CA8B3 /* StationDetailCell.swift in Sources */,
 				8AF9DE4A26DE6909009FC26D /* AddBusMapViewController.swift in Sources */,
 				8AC8FFB326D89792000CACE3 /* BusStationModel.swift in Sources */,
 				8A93126F26DB885F00FF103E /* BusListCell.swift in Sources */,
 				8AC8FFB526D897C6000CACE3 /* BusStationStore.swift in Sources */,
 				8A61050326D766BB00D65214 /* BusListViewController.swift in Sources */,
+				8A416AA526E68B4100B41044 /* Constants.swift in Sources */,
 				8A0025FE26D763C700BEEFD3 /* AppDelegate.swift in Sources */,
 				8A8BBFDA26E3942B0084184B /* StationDetailViewController.swift in Sources */,
 				8A416AA326E668B400B41044 /* StationBusListModel.swift in Sources */,

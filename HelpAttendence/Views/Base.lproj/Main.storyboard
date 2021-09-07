@@ -34,7 +34,7 @@
                                                         <constraint firstAttribute="width" constant="52" id="gnS-nE-p2c"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6512" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gI-8V-5lu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6512" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="1gI-8V-5lu">
                                                     <rect key="frame" x="0.0" y="52.5" width="52" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="cgT-oU-LCe"/>
@@ -135,6 +135,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="출근을 부탁해" id="yHY-he-2MM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="K18-5J-qMB">
+                            <connections>
+                                <action selector="reloadAPI" destination="yZq-1z-DNS" id="yAs-J2-hee"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="KgU-zJ-933">
                             <connections>
                                 <segue destination="XBd-H4-8N8" kind="show" identifier="AddBusMap" id="3g1-zP-Hzo"/>

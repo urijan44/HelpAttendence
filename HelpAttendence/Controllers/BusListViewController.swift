@@ -10,7 +10,12 @@ import CoreLocation
 
 class BusListView: UITableViewController {
   
-  var myBusStore: [StationBusListModel] = []
+  var myBusStore: [StationBusListModel] = [] {
+    didSet {
+      reloadAPI()
+      tableView.reloadData()
+    }
+  }
   
   @IBOutlet weak var addBusMap: UIBarButtonItem!
   
@@ -28,6 +33,11 @@ class BusListView: UITableViewController {
   }
   var timer: Timer?
   
+  // XML parser property
+  var currentElement = ""
+  var xmlParser = XMLParser()
+  var xmlDictionary: [String: String] = [:]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -35,6 +45,8 @@ class BusListView: UITableViewController {
     if userLocation == nil {
       addBusMap.isEnabled = false
     }
+    
+    reloadAPI()
   }
   
   
@@ -56,7 +68,6 @@ class BusListView: UITableViewController {
       userLocation = nil
       startLocationManager()
     }
-    
   }
   
   //MARK:- Navigation
@@ -69,11 +80,28 @@ class BusListView: UITableViewController {
   
   @IBAction func addBusList(unwindSegue: UIStoryboardSegue) {
     guard let stationDetailViewController = unwindSegue.source as? StationDetailViewController, let route = stationDetailViewController.selectRoute else { return }
-    myBusStore.append(route)
+    if !myBusStore.contains(route) {
+      myBusStore.append(route)
+    } else {
+      print("이미 있는 경로입니다!")
+    }
     tableView.reloadData()
   }
   
   //MARK:- Helper Methods
+  
+  //XML Parser
+  //bus arrive message update
+  func updateBusInformation(_ requestModel: StationBusListModel) {
+    let baseURLString = "http://ws.bus.go.kr/api/rest/arrive/getArrInfoByRoute?"
+    guard let serviceKey = Bundle.main.infoDictionary?["StationInfoKey"] as? String else { fatalError("api key not found!")}
+    guard let url = URL(string: "\(baseURLString)serviceKey=\(serviceKey)&stId=\(requestModel.stId)&busRouteId=\(requestModel.busRouteId)&ord=\(requestModel.staOrd)") else { fatalError("url convert error")}
+    guard let xmlParser = XMLParser(contentsOf: url) else { return }
+    xmlParser.delegate = self
+    xmlParser.parse()
+    tableView.reloadData()
+  }
+  
   func showLocationServicesDeniedAlert() {
     let alert = UIAlertController(title: "위치 서비스 비활성화", message: "앱 설정에서 위치 서비스를 활성화 해주세요.", preferredStyle: .alert)
     let okAction = UIAlertAction(title: "확인", style: .default)
@@ -111,10 +139,14 @@ class BusListView: UITableViewController {
     }
   }
   
-  //화면이 표시되거나 리프레시 버튼이 눌렸을 때 도착정보를 갱신하는 메소드
-  //저장된 버스/스테이션 정보를 API에 요청하는 식으로 동작
-  //꼭 구현해야 함
-  //func updateArriveInfomation()
+  //bus info reload
+  @IBAction func reloadAPI() {
+    if !myBusStore.isEmpty {
+      myBusStore.forEach { model in
+        updateBusInformation(model)
+      }
+    }
+  }
   
   
   //MARK:- Table View Data Source
@@ -142,6 +174,7 @@ class BusListView: UITableViewController {
 }
 
 
+//MARK:- CoreLocation Manager Delegtes
 extension BusListView: CLLocationManagerDelegate {
   public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print("didFailWithError \(error.localizedDescription)")
@@ -173,6 +206,68 @@ extension BusListView: CLLocationManagerDelegate {
     if newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
       print("*** We're done!")
       stopLocationManager()
+    }
+  }
+}
+
+//MARK:- XMLParser Delegates
+
+fileprivate enum XMLKey: String, CaseIterable {
+  case itemList = "itemList"
+  case arrmsg1 = "arrmsg1"
+  case arrmsg2 = "arrmsg2"
+  case vehId1 = "vehId1"
+  case vehId2 = "vehId2"
+  case rtNm = "rtNm"
+  case stNm = "stNm"
+}
+
+extension BusListView: XMLParserDelegate {
+  
+  // Get data list
+  // arrmsg1, arrmsg2, vhid1, vhid2,
+  func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
+    currentElement = elementName
+    if elementName == XMLKey.itemList.rawValue {
+      xmlDictionary.removeAll()
+    }
+  }
+  
+  func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    if elementName == XMLKey.itemList.rawValue {
+      let route = StationBusListModel()
+      XMLKey.allCases.forEach { key in
+        if let value = xmlDictionary[key.rawValue] {
+          do {
+            try route.codingKeys(key.rawValue, value)
+          } catch {
+            print(error)
+          }
+        }
+      }
+      
+      myBusStore.forEach { model in
+        if route == model{
+          model.arrmsg1 = route.arrmsg1
+          model.arrmsg2 = route.arrmsg2
+          model.vehId1 = route.vehId1
+          model.vehId2 = route.vehId2
+        }
+      }
+    }
+  }
+  
+  func parser(_ parser: XMLParser, foundCharacters string: String) {
+    if let key = XMLKey.init(rawValue: currentElement) {
+      if key == .arrmsg1 || key == .arrmsg2 {
+        if xmlDictionary[key.rawValue] == nil {
+          xmlDictionary[key.rawValue] = string
+        } else {
+          xmlDictionary[key.rawValue]?.append(string)
+        }
+      } else {
+        xmlDictionary[key.rawValue] = string
+      }
     }
   }
 }

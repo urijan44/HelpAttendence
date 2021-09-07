@@ -33,7 +33,7 @@ class StationDetailViewController: UITableViewController {
       comparision.insert("0", at: comparision.startIndex)
     }
     
-    let baseURLString = "http://ws.bus.go.kr/api/rest/stationinfo/getStationByUid?"
+    let baseURLString = "http://ws.bus.go.kr/api/rest/stationinfo/" + Constants.URL.getStationByUid
     
     guard let serviceKey = Bundle.main.infoDictionary?["StationInfoKey"] as? String else { fatalError("api key not found!")}
     guard let url = URL(string: "\(baseURLString)serviceKey=\(serviceKey)&arsId=\(comparision)") else { fatalError("url convert error")}
@@ -73,6 +73,7 @@ class StationDetailViewController: UITableViewController {
   }
 }
 
+//MARK:- XMLParser Delegats
 fileprivate enum XMLKey: String, CaseIterable {
   case itemList = "itemList"
   case adirection = "adirection"
@@ -83,7 +84,6 @@ fileprivate enum XMLKey: String, CaseIterable {
   case staOrd = "staOrd"
 }
 
-//MARK:- XMLParser Delegats
 extension StationDetailViewController: XMLParserDelegate {
   
   func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
@@ -95,7 +95,7 @@ extension StationDetailViewController: XMLParserDelegate {
   
   func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
     if elementName == XMLKey.itemList.rawValue {
-      var route = StationBusListModel()
+      let route = StationBusListModel()
       XMLKey.allCases.forEach { key in
         if let value = xmlDictionary[key.rawValue] {
           do {
