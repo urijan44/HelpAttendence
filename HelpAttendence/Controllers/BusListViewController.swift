@@ -83,8 +83,6 @@ class BusListViewController: UITableViewController {
     
     if segue.identifier == "ShowBusPosition" {
       let controller = segue.destination as! BusDetailMapViewController
-      //Error!!
-      print(myBusStorage.myBusStore[selectBusIndex].rtNm)
       
       controller.vehId1 = myBusStorage.myBusStore[selectBusIndex].vehId1
       controller.vehId2 = myBusStorage.myBusStore[selectBusIndex].vehId2
@@ -191,6 +189,7 @@ class BusListViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectBusIndex = indexPath.row
+    performSegue(withIdentifier: "ShowBusPosition", sender: nil)
   }
 }
 
