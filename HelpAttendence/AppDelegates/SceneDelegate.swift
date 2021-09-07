@@ -39,6 +39,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func sceneWillEnterForeground(_ scene: UIScene) {
     // Called as the scene transitions from the background to the foreground.
     // Use this method to undo the changes made on entering the background.
+    let navigationController = window!.rootViewController as! UINavigationController
+    let controller = navigationController.viewControllers[0] as! BusListViewController
+    controller.reloadAPI()
   }
 
   func sceneDidEnterBackground(_ scene: UIScene) {

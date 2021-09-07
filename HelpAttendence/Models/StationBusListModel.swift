@@ -18,6 +18,8 @@ class StationBusListModel {
   var arrmsg2: String = ""
   var vehId1: String = ""
   var vehId2: String = ""
+  var traTime1: String = ""
+  var traTime2: String = ""
 
   enum CodingKeysError: Error {
     case keyMatchError
@@ -45,6 +47,10 @@ class StationBusListModel {
       vehId1 = property
     case "vehId2":
       vehId2 = property
+    case "traTime1":
+      traTime1 = property
+    case "traTime2":
+      traTime2 = property
     default:
       throw CodingKeysError.keyMatchError
     }

@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class BusListView: UITableViewController {
+class BusListViewController: UITableViewController {
   
   var myBusStore: [StationBusListModel] = [] {
     didSet {
@@ -16,6 +16,8 @@ class BusListView: UITableViewController {
       tableView.reloadData()
     }
   }
+  
+  var seconds = 10
   
   @IBOutlet weak var addBusMap: UIBarButtonItem!
   
@@ -32,6 +34,7 @@ class BusListView: UITableViewController {
     }
   }
   var timer: Timer?
+  var arriveTime: Timer?
   
   // XML parser property
   var currentElement = ""
@@ -47,6 +50,7 @@ class BusListView: UITableViewController {
     }
     
     reloadAPI()
+    createTimer()
   }
   
   
@@ -175,7 +179,7 @@ class BusListView: UITableViewController {
 
 
 //MARK:- CoreLocation Manager Delegtes
-extension BusListView: CLLocationManagerDelegate {
+extension BusListViewController: CLLocationManagerDelegate {
   public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
     print("didFailWithError \(error.localizedDescription)")
     if (error as NSError).code == CLError.locationUnknown.rawValue {
@@ -220,9 +224,11 @@ fileprivate enum XMLKey: String, CaseIterable {
   case vehId2 = "vehId2"
   case rtNm = "rtNm"
   case stNm = "stNm"
+  case traTime1 = "traTime1"
+  case traTime2 = "traTime2"
 }
 
-extension BusListView: XMLParserDelegate {
+extension BusListViewController: XMLParserDelegate {
   
   // Get data list
   // arrmsg1, arrmsg2, vhid1, vhid2,
@@ -252,6 +258,8 @@ extension BusListView: XMLParserDelegate {
           model.arrmsg2 = route.arrmsg2
           model.vehId1 = route.vehId1
           model.vehId2 = route.vehId2
+          model.traTime1 = route.traTime1
+          model.traTime2 = route.traTime2
         }
       }
     }
@@ -269,5 +277,27 @@ extension BusListView: XMLParserDelegate {
         xmlDictionary[key.rawValue] = string
       }
     }
+  }
+}
+
+//MARK:- Timer
+extension BusListViewController {
+  @objc func updateTimer() {
+    guard let visibleRowsIndexPaths = tableView.indexPathsForVisibleRows else { return }
+    for indexPath in visibleRowsIndexPaths {
+      if let cell = tableView.cellForRow(at: indexPath) as? BusListCell {
+        cell.updateTime(myBusStore[indexPath.row])
+      }
+    }
+  }
+  
+  func createTimer() {
+    let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    self.arriveTime = timer
+  }
+  
+  func cancelTimer() {
+    arriveTime?.invalidate()
+    arriveTime = nil
   }
 }
